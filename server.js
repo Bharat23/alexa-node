@@ -30,7 +30,6 @@ app.get('/', (req, res) => {
           shouldEndSession: false
         }
     }
-    console.log(req.body);
     if (req.body.request.type === 'LaunchRequest') {
         responseObj.response.text = 'Hey, I am here to make your day';
         responseObj.shouldEndSession = false;
@@ -44,8 +43,6 @@ app.get('/', (req, res) => {
             res.json(responseObj);
         });
     }
-      
-    res.json(responseObj);
 });
 
 

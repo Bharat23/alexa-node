@@ -33,9 +33,11 @@ app.get('/', (req, res) => {
     if (req.body.request.type === 'LaunchRequest') {
         responseObj.response.text = 'Hey, I am here to make your day';
         responseObj.shouldEndSession = false;
+        console.log('try m e', responseObj);
         res.json(responseObj);
     }
     else {
+        console.log('here');
         responseObj.shouldEndSession = false;
         fetch('http://api.yomomma.info/')
         .then(data => {

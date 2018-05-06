@@ -11,7 +11,7 @@ app.get('/', (req, res) => {
     res.json({ success: true });
 })
 .post('/', (req, res) => {
-    console.log(req);
+    console.log(req.body);
     res.json({post: 'success'});
 });
 

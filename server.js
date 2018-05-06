@@ -31,7 +31,7 @@ app.get('/', (req, res) => {
         }
     }
     if (req.body.request.type === 'LaunchRequest') {
-        responseObj.response.outputSpeech.text = 'Hey, I am here to make your day';
+        responseObj.response.outputSpeech.text = 'My homies call me Alexa, I am so brutal you gonna atart countin in hexa!!';
         responseObj.response.shouldEndSession = false;
         res.json(responseObj);
     }
@@ -39,7 +39,7 @@ app.get('/', (req, res) => {
         let { type, intent } = req.body.request;
         if (type === 'IntentRequest' && intent.name === 'AMAZON.StopIntent') {
             responseObj.response.shouldEndSession = true;
-            responseObj.response.outputSpeech.text = 'You got served!!!';
+            responseObj.response.outputSpeech.text = 'You just got served son!!!';
             res.json(responseObj);
         }
         else {

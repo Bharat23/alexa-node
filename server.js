@@ -31,7 +31,7 @@ app.get('/', (req, res) => {
         }
     }
     if (req.body.request.type === 'LaunchRequest') {
-        responseObj.response.outputSpeech.text = 'My homies call me Alexa, I am so brutal you gonna atart countin in hexa!!';
+        responseObj.response.outputSpeech.text = 'My homies call me Alexa, I am so brutal you gonna start countin in hexa!!';
         responseObj.response.shouldEndSession = false;
         res.json(responseObj);
     }

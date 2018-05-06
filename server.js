@@ -42,6 +42,7 @@ app.get('/', (req, res) => {
         fetch('http://api.yomomma.info/')
         .then(data => {
             responseObj.response.outputSpeech.text = data.joke;
+            console.log(responseObj);
             res.json(responseObj);
         });
     }

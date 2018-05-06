@@ -12,7 +12,22 @@ app.get('/', (req, res) => {
 })
 .post('/', (req, res) => {
     console.log(req.body);
-    res.json({post: 'success'});
+    const responseObj = {
+        "version": "string",
+        "sessionAttributes": {
+          "key": "value"
+        },
+        "response": {
+          "outputSpeech": {
+            "type": "PlainText",
+            "text": "Plain text string to speak",
+            "ssml": "<speak>SSML text string to speak</speak>"
+          },
+          "shouldEndSession": true
+        }
+      }
+      
+    res.json(responseObj);
 });
 
 

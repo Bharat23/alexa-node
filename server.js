@@ -10,7 +10,7 @@ app.use(bodyParser.json());
 
 app.get('/', (req, res) => {
     fetch('http://api.yomomma.info/')
-    .then(data => res.send(data))
+    .then(data => res.send(JSON.parse(data).joke))
     // res.json({ success: true });
 })
 .post('/', (req, res) => {
@@ -41,7 +41,7 @@ app.get('/', (req, res) => {
         responseObj.response.shouldEndSession = false;
         fetch('http://api.yomomma.info/')
         .then(data => {
-            responseObj.response.outputSpeech.text = data.joke;
+            responseObj.response.outputSpeech.text = JSON.parse(data).joke;
             console.log(responseObj);
             res.json(responseObj);
         });

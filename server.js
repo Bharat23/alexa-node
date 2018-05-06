@@ -33,18 +33,23 @@ app.get('/', (req, res) => {
     if (req.body.request.type === 'LaunchRequest') {
         responseObj.response.outputSpeech.text = 'Hey, I am here to make your day';
         responseObj.response.shouldEndSession = false;
-        console.log('try m e', responseObj);
         res.json(responseObj);
     }
     else {
-        console.log('here');
-        responseObj.response.shouldEndSession = false;
-        fetch('http://api.yomomma.info/')
-        .then(data => {
-            responseObj.response.outputSpeech.text = JSON.parse(data).joke;
-            console.log(responseObj);
+        let { type, intent } = req.body.request;
+        if (type === 'IntentRequest' && intent.name === 'AMAZON.StopIntent') {
+            responseObj.response.shouldEndSession = true;
+            responseObj.response.outputSpeech.text = 'You got served!!!';
             res.json(responseObj);
+        }
+        else {
+            responseObj.response.shouldEndSession = false;
+            fetch('http://api.yomomma.info/')
+            .then(data => {
+                responseObj.response.outputSpeech.text = JSON.parse(data).joke;
+                res.json(responseObj);
         });
+        }
     }
 });
 

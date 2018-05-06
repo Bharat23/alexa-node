@@ -11,7 +11,17 @@ app.get('/', (req, res) => {
     res.json({ success: true });
 })
 .post('/', (req, res) => {
+    let responseText = '';
+    let shouldEndSession = true;
     console.log(req.body);
+    if (req.body.request.type === 'LaunchRequest') {
+        responseText = 'Hey, I am here to make your day';
+        shouldEndSession = false;
+    }
+    else {
+        responseText = 'Hey, I am not that funny';
+        shouldEndSession = false;
+    }
     const responseObj = {
         "version": "string",
         "sessionAttributes": {
@@ -20,10 +30,10 @@ app.get('/', (req, res) => {
         "response": {
           "outputSpeech": {
             "type": "PlainText",
-            "text": "Plain text string to speak",
+            "text": responseText,
             "ssml": "<speak>SSML text string to speak</speak>"
           },
-          "shouldEndSession": true
+          shouldEndSession
         }
       }
       

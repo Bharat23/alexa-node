@@ -10,6 +10,7 @@
   "author": "Bharat Sinha",
   "license": "MIT",
   "dependencies": {
+    "alexa-verifier-middleware": "^1.0.1",
     "body-parser": "^1.18.2",
     "express": "^4.16.3",
     "request": "^2.85.0",

@@ -1,10 +1,12 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const fetch = require('request-promise');
+const alexaVerifier = require('alexa-verifier-middleware');
 
 const app = express();
 const PORT = process.env.PORT || 5000;
 
+app.use(alexaVerifier);
 app.use(bodyParser.urlencoded());
 app.use(bodyParser.json());
 

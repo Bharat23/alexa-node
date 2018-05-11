@@ -49,6 +49,11 @@ app.get('/', (req, res) => {
             responseObj.response.outputSpeech.text = 'Try saying "Yo Mama" followed by your insult to continue the battle or say "I quit"';
             res.json(responseObj);
         }
+        else if (type === 'IntentRequest' && intent.name === 'AMAZON.CancelIntent') {
+            responseObj.response.shouldEndSession = false;
+            responseObj.response.outputSpeech.text = 'Ok, you need a break from my awesomeness!!! You Got it.';
+            res.json(responseObj);
+        }
         else {
             responseObj.response.shouldEndSession = false;
             fetch('http://api.yomomma.info/')

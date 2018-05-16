@@ -50,7 +50,7 @@ app.get('/', (req, res) => {
             res.json(responseObj);
         }
         else if (type === 'IntentRequest' && intent.name === 'AMAZON.CancelIntent') {
-            responseObj.response.shouldEndSession = false;
+            responseObj.response.shouldEndSession = true;
             responseObj.response.outputSpeech.text = 'Ok, you need a break from my awesomeness!!! You Got it.';
             res.json(responseObj);
         }
@@ -58,7 +58,7 @@ app.get('/', (req, res) => {
             responseObj.response.shouldEndSession = false;
             fetch('http://api.yomomma.info/')
             .then(data => {
-                responseObj.response.outputSpeech.text = JSON.parse(data).joke;
+                responseObj.response.outputSpeech.text = JSON.parse(data).joke + '. Continue the battle or say "I QUIT" before it\'s too late. L.O.L';
                 res.json(responseObj);
         });
         }
